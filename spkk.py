@@ -30,17 +30,17 @@ mic=sr.Microphone(device_index=DEV, chunk_size=409)
 fs = 44100  # Sample rate
 seconds = 60  # Duration of recording
 
-raw = sd.rec(int(seconds * fs), samplerate=fs, channels=1, dtype="int16")
-time.sleep(5)
-sd.stop()
-print (type(raw), raw[0][0])
-write('out.wav', fs, raw)
-aud = sr.AudioData(raw, 44100, 2)
+while True:
+    raw = sd.rec(int(seconds * fs), samplerate=fs, channels=1, dtype="int16")
 
-# wav=sr.AudioFile("out2.wav")
-# with wav as source:
-#         aud = r.record(source)
-
-print ("aud:", aud)
-txt = rcog(aud)
-print(txt)
+    cmd = input().strip()
+    sd.stop()
+    if cmd:
+        # print ("Command:", cmd)
+        break
+    # print (type(raw), raw[0][0])
+    # write('out.wav', fs, raw)
+    aud = sr.AudioData(raw, 44100, 2)
+    # print ("aud:", aud)
+    txt = rcog(aud).strip()
+    print(txt, end="")
