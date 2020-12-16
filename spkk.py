@@ -1,4 +1,4 @@
-import time
+import time, sys, os
 import speech_recognition as sr
 from scipy.io.wavfile import write
 import sounddevice as sd
@@ -30,17 +30,18 @@ mic=sr.Microphone(device_index=DEV, chunk_size=409)
 fs = 44100  # Sample rate
 seconds = 60  # Duration of recording
 
+print("Enter to start recording", file=sys.stderr)
 while True:
+    cmd = input().strip()
+    if cmd:
+        break
+    print ("RECORDING...", file=sys.stderr)
     raw = sd.rec(int(seconds * fs), samplerate=fs, channels=1, dtype="int16")
-
     cmd = input().strip()
     sd.stop()
+    print ("STOPPED", file=sys.stderr)
     if cmd:
-        # print ("Command:", cmd)
         break
-    # print (type(raw), raw[0][0])
-    # write('out.wav', fs, raw)
     aud = sr.AudioData(raw, 44100, 2)
-    # print ("aud:", aud)
     txt = rcog(aud).strip()
     print(txt, end="")
