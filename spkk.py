@@ -4,8 +4,8 @@ from scipy.io.wavfile import write
 import sounddevice as sd
 
 # RCOG = "recognize_google"
-# RCOG = "recognize_google_cloud"
-RCOG = "recognize_sphinx"
+RCOG = "recognize_google_cloud"
+#RCOG = "recognize_sphinx"
 DEV = 2
 
 # r=sr.Recognizer()
@@ -39,7 +39,7 @@ while True:
     sd.stop()
     print ("STOPPED", file=sys.stderr)
     aud = sr.AudioData(raw, 44100, 2)
-    txt = rcog(aud).strip()
+    txt = rcog(aud).strip().capitalize() + "."
     print(txt, file=sys.stderr, end="")
     cmd = input().strip()
     if cmd=='q':
