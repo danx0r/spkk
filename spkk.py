@@ -8,6 +8,16 @@ RCOG = "recognize_google_cloud"
 #RCOG = "recognize_sphinx"
 DEV = 2
 
+def fixtext(txt):
+    words = txt.strip().capitalize().split()
+    for i in range(len(words)):
+        if words[i] == "i":
+            words[i] = 'I'
+    txt = " ".join(words)
+    if words[-1].isalnum():
+        txt += "."
+    return txt
+
 # r=sr.Recognizer()
 # wav=sr.AudioFile("test.wav")
 # with wav as source:
@@ -39,13 +49,13 @@ while True:
     sd.stop()
     print ("STOPPED", file=sys.stderr)
     aud = sr.AudioData(raw, 44100, 2)
-    txt = rcog(aud).strip().capitalize() + "."
+    txt = fixtext(rcog(aud))
     print(txt, file=sys.stderr, end="")
     cmd = input().strip()
     if cmd=='q':
         print(txt)
         break
     elif cmd=="":
-        print(txt)
+        print(txt, end=" ")
     else:
         print("\nDELETED", file=sys.stderr)
