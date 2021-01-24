@@ -8,14 +8,25 @@ RCOG = "recognize_google_cloud"
 #RCOG = "recognize_sphinx"
 DEV = 2
 
+lastchar = ''
+
 def fixtext(txt):
-    words = txt.strip().capitalize().split()
+    global lastchar
+    txt = txt.strip()
+    if lastchar in ".?!":
+        txt = txt.capitalize()
+    else:
+        txt = txt.lower()
+    words = txt.split()
+    last = '.'
     for i in range(len(words)):
         if words[i] == "i":
             words[i] = 'I'
+        if last[-1] in ".?!":
+            words[i] = words[i].capitalize()
+        last = words[i]
     txt = " ".join(words)
-    if words[-1].isalnum():
-        txt += "."
+    lastchar = txt[-1]
     return txt
 
 # r=sr.Recognizer()
