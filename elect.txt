@@ -1,0 +1,30 @@
+A Natural Election
+
+~~or~~
+
+How not to spoil the party
+
+
+Abstract
+
+The main structural barrier to the creation of a viable third party in the united states of america is the prevalence of first-past-the-post elections for the vast majority of public offices. Gerrymandering and barriers to ballot access are secondary consequences of the entrenched duopoly. However, with modern technology, basic game theory, and a commitment to ethical and transparent behavior, a third party could take root and grow naturally, overcoming the significant obstacles in its path. By implementing a de-facto ranked-choice policy, the new party can avoid playing the role of spoiler.
+
+
+The Art Of The Steal
+
+Public faith in free and fair elections is the bedrock of our democracy. The events of january 6th 2021 paint a stark and foreboding picture of what lies ahead if that faith cannot be restored. It would be difficult at this point in time to object to the proposition that the politics of the united states has become unworkably partisan and polarized. To a large degree, this appears to be the result of the stranglehold the two entrenched political parties hold over the electorate. In particular, the primary system strongly favors candidates who cater to their base, disfavoring moderate, centrist candidates, and therefore disenfranchising moderate, centrist voters.
+
+The obvious remedy for this problem would be the rise of a moderate, centrist party, one that represent the views of voters who don't lean strongly towards one pole or the other on the political spectrum. However, the two-party duopoly seems to make this a mathematical impossibility. How could such a centrist party rise to prominence, when in the beginning their share of the vote would be small? Given our winner-takes-all, first-past-the-post voting system, it would seem that voters would be disinclined to vote for a party that clearly cannot win, concerned they would just be throwing their vote away, or worse, splitting the ticket, potentially leading to one of the major parties winning with as little as a 35% share of the vote.
+
+But wait. We have something at our disposal that the founders never envisioned. We have the internet! We have computers in our pockets! Okay, admittedly, that seems to have been a mixed bag lately. Isn't that the dystopian technology that has run amok, spawning a plethora of fact-challenged (or fact-free) conspiratorial information silos, amplifying grievances, radicalizing the impressionable, and encouraging us to be at each other's throats solely because that state of mind leads to more click-through revenue? Yes, i'm talking about that same l'enfant singularité tech. This is a case where fighting fire with fire makes perfect sense. In fact, it may be our only option.
+
+Everyboy In The Poll
+
+Another spectacular recent techno-fail is the state of political polling. It's hard to make decisions in a vacuum; without accurate information about what voters are thinking, candidates and their campaigns are flying blind. It's worth noting that this lack of information is concentrated in the middle of the spectrum; hardcore partisans are much more predictable than independents and moderates. It seems plausible that political strategists are inclined to double down on the base rather than court persuadable voters at least in part because information about persuadable voters has become so unreliable.
+
+Here's a crazy thought: Why not form a party where everyone agrees to say what they're thinking?
+
+This is how it would work. When you register for party x, you are strongly encouraged to go to the website, sign up, and download the mobile app. You'll get a news feed covering the goings-on of elections you're interested in. Periodically, you'll be asked a few questions, such as what issues matter most to you, the likelihood that you're going to vote, and -- here's the kicker: if your candidate doesn't make the cut, what's your second choice? The (anonymous!) aggregated answers to these questions will be posted prominently on the party website.
+
+Making the answer to this question accurate and publicly known has significant ramifications.
+

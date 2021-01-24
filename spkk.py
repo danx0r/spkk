@@ -18,13 +18,16 @@ def fixtext(txt):
     else:
         txt = txt.lower()
     words = txt.split()
-    last = '.'
+    last = ' '
     for i in range(len(words)):
         if words[i] == "i":
             words[i] = 'I'
         if last[-1] in ".?!":
             words[i] = words[i].capitalize()
         last = words[i]
+    if words[-1] == 'colon':
+        words.pop(-1)
+        words[-1] += ':'
     txt = " ".join(words)
     lastchar = txt[-1]
     return txt
