@@ -28,6 +28,9 @@ def fixtext(txt):
     if words[-1] == 'colon':
         words.pop(-1)
         words[-1] += ':'
+    if words[-1] == 'semicolon':
+        words.pop(-1)
+        words[-1] += ';'
     txt = " ".join(words)
     lastchar = txt[-1]
     return txt
