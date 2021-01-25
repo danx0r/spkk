@@ -1,4 +1,4 @@
-Natural Elections
+﻿Natural Elections
 
 ~~or~~
 
@@ -38,3 +38,10 @@ Under this scenario, Irene decides to stay in the race till the end. She can't w
 
 Let's run through another scenario: In this case, David has 40, Robert has 45, and Irene has 15. However, Irene's voters' second choices are lopsided: 12 for David, 3 for Robert. In this situation, under the Party X guidelines, Irene must drop out of the race before the election. As expected, twelve of her votes go to David and 3 to Robert, leading David to win 52 to 48. If she had stayed in the race, she would have been a classic spoiler: Robert would have won with a plurality of 45% of the vote, even though a majority of voters would have preferred David over Robert if Irene was not in the mix. The combination of technology and a disciplined, strategic approach to withdrawing from the race under certain conditions should allow a 3rd party the breathing room to enter races, establish a base of support, and over time gain legitimacy in the eyes of potential voters. This approach allows voters to make a statement with their vote, without feeling like they're throwing it away on a candidate who cannot win.
 
+Through a window darkly
+
+Why start a new party when, at least for a while, it is unlikely that you will win elections? In Dame Jane Goodall’s seminal work "Through A Window: My Thirty Years with the Chimpanzees of Gombe , Goodall describes her horror upon discovering that chimpanzee tribes can split, conflict with each other, and escalate conflicts to war and mass murder (https://en.wikipedia.org/wiki/Gombe_Chimpanzee_War#Effects_on_Goodall). 
+
+The fact is, we are a primate species. Like other primate species, we are social and tribal. We are hard-wired by evolution to form and join groups, and to identify ourselves publicly as loyal members of our group. No doubt there is strong evolutionary pressure in the direction of this behavior pattern. Individuals who eschewed tribal affiliation would have been unprotected, isolated, and unlikely to reproduce.
+
+History shows us that while tribal affiliations are strong, disparate tribes can live together in peace; endless war is not a given. Peace, however, requires a shared set of facts and diplomatic negotiation in order for cooler heads to prevail
