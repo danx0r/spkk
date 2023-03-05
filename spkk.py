@@ -2,10 +2,13 @@ import time, sys, os
 import speech_recognition as sr
 from scipy.io.wavfile import write
 import sounddevice as sd
+import numpy as np
+import whisper
 
 # RCOG = "recognize_google"
-RCOG = "recognize_google_cloud"
-#RCOG = "recognize_sphinx"
+# RCOG = "recognize_google_cloud"
+# RCOG = "recognize_sphinx"
+RCOG = "recognize_whisper"
 DEV = 2
 
 lastchar = ''
@@ -31,21 +34,33 @@ def fixtext(txt):
     if words[-1] == 'semicolon':
         words.pop(-1)
         words[-1] += ';'
+    if words[-1] == 'period':
+        words.pop(-1)
+        words[-1] += '. '
     txt = " ".join(words)
     lastchar = txt[-1]
     return txt
 
-# r=sr.Recognizer()
-# wav=sr.AudioFile("test.wav")
-# with wav as source:
-#         aud = r.record(source)
-#
-# txt=r.recognize_sphinx(aud)
-# print (txt)
 
-r = sr.Recognizer()
-rcog = getattr(r, RCOG)
-mic=sr.Microphone(device_index=DEV, chunk_size=409)
+def recognize_whisper(sr_audio):
+    # print (type(sr_audio))
+    wav = sr_audio.get_wav_data()
+    f = open("debug.wav", 'wb')
+    f.write(wav)
+    f.close()
+    npaudio = np.ndarray(sr_audio.get_raw_data())
+    result = wmodel.transcribe(npaudio)
+    print(result["text"])
+
+if RCOG == "recognize_whisper":
+    print("Loading model", file=sys.stderr)
+    wmodel = whisper.load_model("base")
+    print("Model loaded", file=sys.stderr)
+    rcog = recognize_whisper
+else:
+    r = sr.Recognizer()
+    rcog = getattr(r, RCOG)
+    mic=sr.Microphone(device_index=DEV, chunk_size=409)
 
 # while 1-1:
 #     with mic as src:
