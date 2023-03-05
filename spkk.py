@@ -1,14 +1,13 @@
 import time, sys, os
 import speech_recognition as sr
-from scipy.io.wavfile import write
 import sounddevice as sd
 import numpy as np
 import whisper
 
-# RCOG = "recognize_google"
-# RCOG = "recognize_google_cloud"
-# RCOG = "recognize_sphinx"
-RCOG = "recognize_whisper"
+print("Loading model", file=sys.stderr)
+wmodel = whisper.load_model("base")
+print("Model loaded", file=sys.stderr)
+
 DEV = 2
 
 lastchar = ''
@@ -42,32 +41,10 @@ def fixtext(txt):
     return txt
 
 
-def recognize_whisper(sr_audio):
-    # print (type(sr_audio))
-    wav = sr_audio.get_wav_data()
-    f = open("debug.wav", 'wb')
-    f.write(wav)
-    f.close()
-    npaudio = np.ndarray(sr_audio.get_raw_data())
-    result = wmodel.transcribe(npaudio)
+def recognize_whisper(wavfile):
+    result = wmodel.transcribe(wavfile, fp16=False)
     print(result["text"])
-
-if RCOG == "recognize_whisper":
-    print("Loading model", file=sys.stderr)
-    wmodel = whisper.load_model("base")
-    print("Model loaded", file=sys.stderr)
-    rcog = recognize_whisper
-else:
-    r = sr.Recognizer()
-    rcog = getattr(r, RCOG)
-    mic=sr.Microphone(device_index=DEV, chunk_size=409)
-
-# while 1-1:
-#     with mic as src:
-#         aud = r.listen(src)
-#
-#     txt=rcog(aud)
-#     print (txt)
+    return result["text"]
 
 fs = 44100  # Sample rate
 seconds = 60  # Duration of recording
@@ -75,13 +52,20 @@ seconds = 60  # Duration of recording
 print("Enter to start recording", file=sys.stderr)
 cmd = input().strip()
 while True:
+    t = time.time()
     print ("RECORDING...", file=sys.stderr)
     raw = sd.rec(int(seconds * fs), samplerate=fs, channels=1, dtype="int16")
     cmd = input().strip()
     sd.stop()
+    sd.wait()
+    t = time.time()-t-.1
+    # print (t, "Seconds")
     print ("STOPPED", file=sys.stderr)
-    aud = sr.AudioData(raw, 44100, 2)
-    txt = fixtext(rcog(aud))
+    aud = sr.AudioData(raw[:int(t)*fs], fs, 2)
+    f=open("__spkk__.wav", 'wb')
+    f.write(aud.get_wav_data())
+    f.close()
+    txt = fixtext(recognize_whisper("__spkk__.wav"))
     print(txt, file=sys.stderr, end="")
     cmd = input().strip()
     if cmd=='q':
