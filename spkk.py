@@ -31,7 +31,15 @@ while True:
     print ("STOPPED")
     aud = sr.AudioData(raw[:int(t)*fs], fs, 2)
     f=open("__spkk__.wav", 'wb')
-    f.write(aud.get_wav_data())
+    try:
+        f.write(aud.get_wav_data())
+    except:
+        f.close()
+        print("ERROR -- <enter> to resume recording, 'q' to quit")
+        cmd = input()
+        if cmd[:1] == 'q':
+            break
+        continue
     f.close()
     txt = recognize_whisper("__spkk__.wav")
     txt = txt.strip()
