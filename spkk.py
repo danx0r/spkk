@@ -18,13 +18,13 @@ def recognize_whisper(wavfile):
 
 print("Enter to start recording")
 cmd = input().strip()
-fout = open(sys.argv[1], 'w')
+fout = open(sys.argv[1], 'a')
 
 while True:
     t = time.time()
     print ("RECORDING...")
     raw = sd.rec(int(seconds * fs), samplerate=fs, channels=1, dtype="int16")
-    cmd = input().strip()
+    input()
     sd.stop()
     sd.wait()
     t = time.time()-t-.1
@@ -36,7 +36,11 @@ while True:
     txt = recognize_whisper("__spkk__.wav")
     txt = txt.strip()
     print (txt, end="")
-    cmd = input().strip()
+    cmd = input()
+    if cmd[:1] == ' ':
+        cmd = ' '
+    else:
+        cmd = cmd.strip()
     if cmd=='q':
         print(txt, file=fout)
         break
