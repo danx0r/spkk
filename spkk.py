@@ -45,7 +45,13 @@ while True:
     elif cmd=='x':
         print("\nDELETED", file=sys.stderr)
     elif cmd=='e':
-        txt = "replacement theory"
+        f = open("__spkk_edit__", 'w')
+        f.write(txt)
+        f.close()
+        os.system("nano __spkk_edit__")
+        f = open("__spkk_edit__")
+        txt = f.read()
+        f.close()
         print (txt, file=sys.stderr)
         print (txt)
     elif cmd == "":
