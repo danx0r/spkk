@@ -1,7 +1,7 @@
 import time, sys, os
 import speech_recognition as sr
 import sounddevice as sd
-import numpy as np
+# import numpy as np
 import whisper
 
 print("Loading model", file=sys.stderr)
@@ -10,40 +10,10 @@ print("Model loaded", file=sys.stderr)
 
 DEV = 2
 
-lastchar = ''
-
-def fixtext(txt):
-    global lastchar
-    txt = txt.strip()
-    if lastchar in ".?!":
-        txt = txt.capitalize()
-    else:
-        txt = txt.lower()
-    words = txt.split()
-    last = ' '
-    for i in range(len(words)):
-        if words[i] == "i":
-            words[i] = 'I'
-        if last[-1] in ".?!":
-            words[i] = words[i].capitalize()
-        last = words[i]
-    if words[-1] == 'colon':
-        words.pop(-1)
-        words[-1] += ':'
-    if words[-1] == 'semicolon':
-        words.pop(-1)
-        words[-1] += ';'
-    if words[-1] == 'period':
-        words.pop(-1)
-        words[-1] += '. '
-    txt = " ".join(words)
-    lastchar = txt[-1]
-    return txt
-
 
 def recognize_whisper(wavfile):
     result = wmodel.transcribe(wavfile, fp16=False)
-    print(result["text"])
+    # print(result["text"])
     return result["text"]
 
 fs = 44100  # Sample rate
@@ -65,13 +35,22 @@ while True:
     f=open("__spkk__.wav", 'wb')
     f.write(aud.get_wav_data())
     f.close()
-    txt = fixtext(recognize_whisper("__spkk__.wav"))
-    print(txt, file=sys.stderr, end="")
+    txt = recognize_whisper("__spkk__.wav")
+    txt = txt.strip()
+    print (txt, file=sys.stderr, end="")
     cmd = input().strip()
     if cmd=='q':
         print(txt)
         break
-    elif cmd=="":
+    elif cmd=='x':
+        print("\nDELETED", file=sys.stderr)
+    elif cmd=='e':
+        txt = "replacement theory"
+        print (txt, file=sys.stderr)
+        print (txt)
+    elif cmd == "":
         print(txt, end=" ")
     else:
-        print("\nDELETED", file=sys.stderr)
+        txt = txt[:-1] + cmd
+        print(txt, file=sys.stderr, end="")
+        print (txt)
