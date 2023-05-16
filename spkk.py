@@ -1,12 +1,11 @@
 import time, sys, os
 import speech_recognition as sr
 import sounddevice as sd
-# import numpy as np
 import whisper
 
 fs = 44100  # Sample rate
 seconds = 60  # Duration of recording
-DEV = 2 # Audio input device
+DEV = 8 # Audio input device
 
 print("Loading model")
 wmodel = whisper.load_model("base")
@@ -23,7 +22,7 @@ fout = open(sys.argv[1], 'a')
 while True:
     t = time.time()
     print ("RECORDING...")
-    raw = sd.rec(int(seconds * fs), samplerate=fs, channels=1, dtype="int16")
+    raw = sd.rec(int(seconds * fs), samplerate=fs, channels=1, device=DEV, dtype="int16")
     input()
     sd.stop()
     sd.wait()
