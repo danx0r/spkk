@@ -5,7 +5,10 @@ import whisper
 
 fs = 44100  # Sample rate
 seconds = 60  # Duration of recording
-DEV = 8 # Audio input device
+
+for DEV, dev in enumerate(sd.query_devices()):
+    if "AK5370" in dev['name']:
+        print ("Setting DEV=", DEV)
 
 print("Loading model")
 wmodel = whisper.load_model("base")
