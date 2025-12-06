@@ -69,7 +69,9 @@ while True:
         print (txt)
     elif cmd == "":
         print(txt, end=" ", file=fout)
+        fout.flush()
     else:
         txt = txt[:-1] + cmd
         print (txt, file=fout)
         print(txt, end="")
+        fout.flush()
